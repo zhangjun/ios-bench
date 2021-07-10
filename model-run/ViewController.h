@@ -9,6 +9,9 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UISwitch *runGPU;
+@property (weak, nonatomic) IBOutlet UITextView *resultsView;
+@property (weak, nonatomic) IBOutlet UIButton *runPredict;
 
 @end
 

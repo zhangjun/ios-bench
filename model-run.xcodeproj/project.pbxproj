@@ -9,13 +9,20 @@
 /* Begin PBXBuildFile section */
 		180EFBFE2698A2C10058D010 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFBFD2698A2C10058D010 /* AppDelegate.m */; };
 		180EFC012698A2C10058D010 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFC002698A2C10058D010 /* SceneDelegate.m */; };
-		180EFC042698A2C10058D010 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFC032698A2C10058D010 /* ViewController.m */; };
+		180EFC042698A2C10058D010 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 180EFC032698A2C10058D010 /* ViewController.mm */; };
 		180EFC072698A2C10058D010 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180EFC052698A2C10058D010 /* Main.storyboard */; };
 		180EFC092698A2C40058D010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180EFC082698A2C40058D010 /* Assets.xcassets */; };
 		180EFC0C2698A2C40058D010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 180EFC0A2698A2C40058D010 /* LaunchScreen.storyboard */; };
 		180EFC0F2698A2C40058D010 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFC0E2698A2C40058D010 /* main.m */; };
 		180EFC192698A2C40058D010 /* model_runTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFC182698A2C40058D010 /* model_runTests.m */; };
 		180EFC242698A2C40058D010 /* model_runUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 180EFC232698A2C40058D010 /* model_runUITests.m */; };
+		180EFC452698C8190058D010 /* image_utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 180EFC442698C8190058D010 /* image_utils.mm */; };
+		180EFC6726994CE00058D010 /* model in Resources */ = {isa = PBXBuildFile; fileRef = 180EFC6626994CE00058D010 /* model */; };
+		180EFC7626998AD60058D010 /* ModelBenchmark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 180EFC7426998AD60058D010 /* ModelBenchmark.cpp */; };
+		180EFC83269997F40058D010 /* lib in Resources */ = {isa = PBXBuildFile; fileRef = 180EFC82269997F40058D010 /* lib */; };
+		180EFC88269998060058D010 /* include in Resources */ = {isa = PBXBuildFile; fileRef = 180EFC87269998060058D010 /* include */; };
+		180EFC9426999E810058D010 /* libpaddle_api_light_bundled.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 180EFC9326999E810058D010 /* libpaddle_api_light_bundled.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		180EFCA92699A1F90058D010 /* MetalPerformanceShaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 180EFCA82699A1F90058D010 /* MetalPerformanceShaders.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +49,7 @@
 		180EFBFF2698A2C10058D010 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		180EFC002698A2C10058D010 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		180EFC022698A2C10058D010 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		180EFC032698A2C10058D010 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		180EFC032698A2C10058D010 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		180EFC062698A2C10058D010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		180EFC082698A2C40058D010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		180EFC0B2698A2C40058D010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +61,15 @@
 		180EFC1F2698A2C40058D010 /* model-runUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "model-runUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		180EFC232698A2C40058D010 /* model_runUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = model_runUITests.m; sourceTree = "<group>"; };
 		180EFC252698A2C40058D010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		180EFC432698C8190058D010 /* image_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image_utils.h; sourceTree = "<group>"; };
+		180EFC442698C8190058D010 /* image_utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = image_utils.mm; sourceTree = "<group>"; };
+		180EFC6626994CE00058D010 /* model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = model; sourceTree = "<group>"; };
+		180EFC7426998AD60058D010 /* ModelBenchmark.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ModelBenchmark.cpp; sourceTree = "<group>"; };
+		180EFC7526998AD60058D010 /* ModelBenchmark.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ModelBenchmark.hpp; sourceTree = "<group>"; };
+		180EFC82269997F40058D010 /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
+		180EFC87269998060058D010 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = include; sourceTree = "<group>"; };
+		180EFC9326999E810058D010 /* libpaddle_api_light_bundled.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpaddle_api_light_bundled.a; path = "model-run/lib/libpaddle_api_light_bundled.a"; sourceTree = "<group>"; };
+		180EFCA82699A1F90058D010 /* MetalPerformanceShaders.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalPerformanceShaders.framework; path = System/Library/Frameworks/MetalPerformanceShaders.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				180EFCA92699A1F90058D010 /* MetalPerformanceShaders.framework in Frameworks */,
+				180EFC9426999E810058D010 /* libpaddle_api_light_bundled.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +106,7 @@
 				180EFC172698A2C40058D010 /* model-runTests */,
 				180EFC222698A2C40058D010 /* model-runUITests */,
 				180EFBFA2698A2C10058D010 /* Products */,
+				180EFC9226999E810058D010 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,17 +123,24 @@
 		180EFBFB2698A2C10058D010 /* model-run */ = {
 			isa = PBXGroup;
 			children = (
+				180EFC87269998060058D010 /* include */,
+				180EFC82269997F40058D010 /* lib */,
+				180EFC6626994CE00058D010 /* model */,
+				180EFC432698C8190058D010 /* image_utils.h */,
+				180EFC442698C8190058D010 /* image_utils.mm */,
 				180EFBFC2698A2C10058D010 /* AppDelegate.h */,
 				180EFBFD2698A2C10058D010 /* AppDelegate.m */,
 				180EFBFF2698A2C10058D010 /* SceneDelegate.h */,
 				180EFC002698A2C10058D010 /* SceneDelegate.m */,
 				180EFC022698A2C10058D010 /* ViewController.h */,
-				180EFC032698A2C10058D010 /* ViewController.m */,
+				180EFC032698A2C10058D010 /* ViewController.mm */,
 				180EFC052698A2C10058D010 /* Main.storyboard */,
 				180EFC082698A2C40058D010 /* Assets.xcassets */,
 				180EFC0A2698A2C40058D010 /* LaunchScreen.storyboard */,
 				180EFC0D2698A2C40058D010 /* Info.plist */,
 				180EFC0E2698A2C40058D010 /* main.m */,
+				180EFC7426998AD60058D010 /* ModelBenchmark.cpp */,
+				180EFC7526998AD60058D010 /* ModelBenchmark.hpp */,
 			);
 			path = "model-run";
 			sourceTree = "<group>";
@@ -135,6 +161,15 @@
 				180EFC252698A2C40058D010 /* Info.plist */,
 			);
 			path = "model-runUITests";
+			sourceTree = "<group>";
+		};
+		180EFC9226999E810058D010 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				180EFCA82699A1F90058D010 /* MetalPerformanceShaders.framework */,
+				180EFC9326999E810058D010 /* libpaddle_api_light_bundled.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +275,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				180EFC0C2698A2C40058D010 /* LaunchScreen.storyboard in Resources */,
+				180EFC83269997F40058D010 /* lib in Resources */,
 				180EFC092698A2C40058D010 /* Assets.xcassets in Resources */,
+				180EFC88269998060058D010 /* include in Resources */,
+				180EFC6726994CE00058D010 /* model in Resources */,
 				180EFC072698A2C10058D010 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,9 +304,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				180EFC042698A2C10058D010 /* ViewController.m in Sources */,
+				180EFC042698A2C10058D010 /* ViewController.mm in Sources */,
+				180EFC7626998AD60058D010 /* ModelBenchmark.cpp in Sources */,
 				180EFBFE2698A2C10058D010 /* AppDelegate.m in Sources */,
 				180EFC0F2698A2C40058D010 /* main.m in Sources */,
+				180EFC452698C8190058D010 /* image_utils.mm in Sources */,
 				180EFC012698A2C10058D010 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,10 +483,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KV63CC7M9H;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/model-run/include";
 				INFOPLIST_FILE = "model-run/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/model-run/lib",
+					"$(PROJECT_DIR)/model-run/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhangjun.model-run";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -461,10 +507,16 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KV63CC7M9H;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/model-run/include";
 				INFOPLIST_FILE = "model-run/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/model-run/lib",
+					"$(PROJECT_DIR)/model-run/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zhangjun.model-run";
 				PRODUCT_NAME = "$(TARGET_NAME)";
