@@ -127,6 +127,7 @@ std::shared_ptr<PaddlePredictor> CreatorPredictor(const std::string& model_file,
 void ModelBenchmark::debug() {
     // 5. Get output
     std::cout << "\n====== output summary ====== " << std::endl;
+    if(predictor_ == nullptr) return;
     size_t output_tensor_num = predictor_->GetOutputNames().size();
     std::cout << "output tensor num:" << output_tensor_num << std::endl;
 
@@ -160,7 +161,7 @@ void ModelBenchmark::init() {
       input_shapes.push_back(get_shape(str_input_shapes[i]));
     }
     // create predictor
-    auto predictor_ = CreatorPredictor(model_file_, metal_lib_, num_threads_, 0);
+    predictor_ = CreatorPredictor(model_file_, metal_lib_, num_threads_, 0);
     
     // 3. Prepare input data
     std::cout << "input_shapes.size():" << input_shapes.size() << std::endl;
@@ -177,8 +178,11 @@ void ModelBenchmark::init() {
         input_data[i] = 1.f;
       }
     }
-    predictor_ -> Run();
-    debug();
+    
+    std::cout << "[version] " << predictor_ -> GetVersion() << std::endl;
+    // debug
+    // predictor_ -> Run();
+    // debug();
 }
 
 BenchResult ModelBenchmark::get_result() {
@@ -186,11 +190,11 @@ BenchResult ModelBenchmark::get_result() {
   
   // warmup
   for(int i = 0; i < warmup_times_; ++ i) {
-      //predictor_ -> Run();
+      predictor_ -> Run();
   }
   // run loop
   for(int i = 0; i < repeat_times_; ++ i) {
-      // predictor_ -> Run();
+      predictor_ -> Run();
   }
     
   return result;
