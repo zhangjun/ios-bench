@@ -190,12 +190,27 @@ BenchResult ModelBenchmark::get_result() {
   
   // warmup
   for(int i = 0; i < warmup_times_; ++ i) {
+      timeval tv_begin, tv_end;
+      gettimeofday(&tv_begin, NULL);
+      
       predictor_ -> Run();
+      
+      gettimeofday(&tv_end, NULL);
+      double elapsed = (tv_end.tv_sec - tv_begin.tv_sec) * 1000.0 + (tv_end.tv_usec - tv_begin.tv_usec) / 1000.0;
+      result.addTime(elapsed);
   }
   // run loop
   for(int i = 0; i < repeat_times_; ++ i) {
+      timeval tv_begin, tv_end;
+      gettimeofday(&tv_begin, NULL);
+      
       predictor_ -> Run();
+      
+      gettimeofday(&tv_end, NULL);
+      double elapsed = (tv_end.tv_sec - tv_begin.tv_sec) * 1000.0 + (tv_end.tv_usec - tv_begin.tv_usec) / 1000.0;
+      result.addTime(elapsed);
   }
+  debug();
     
   return result;
 }
