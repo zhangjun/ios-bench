@@ -26,6 +26,7 @@ struct BenchResult {
     //time
     float min = FLT_MAX;
     float max = FLT_MIN;
+    float first = -1;
     float avg = 0;
     float total = 0;
     int count = 0;
@@ -34,16 +35,22 @@ struct BenchResult {
     
     int addTime(float time){
         count++;
+        if(count == 1) {
+            first = time;
+            return 0;
+        }
         total += time;
         min = std::min(min, time);
         max = std::max(max, time);
-        avg = total/count;
+        avg = total/(count - 1);
         return 0;
     };
+
+    void reset() {}
     
     std::string description() {
         std::ostringstream ostr;
-        ostr << "min = " << min << "  max = " << max << "  avg = " << avg << std::endl;
+        ostr << "first = " << first << "  min = " << min << "  max = " << max << "  avg = " << avg << std::endl;
         return ostr.str();
     };
 };
