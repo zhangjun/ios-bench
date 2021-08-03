@@ -27,7 +27,7 @@
 #include "paddle_place.h"  // NOLINT
 
 namespace paddle {
-namespace lite_api {
+namespace lite_metal_api {
 
 using shape_t = std::vector<int64_t>;
 using lod_t = std::vector<std::vector<uint64_t>>;
@@ -135,7 +135,7 @@ class LITE_API PaddlePredictor {
 
  protected:
   int threads_{1};
-  lite_api::PowerMode mode_{lite_api::LITE_POWER_NO_BIND};
+  lite_metal_api::PowerMode mode_{lite_metal_api::LITE_POWER_NO_BIND};
 };
 
 /// Base class for all the configs.
@@ -153,6 +153,15 @@ class LITE_API ConfigBase {
   // Set the cached npu/xpu/rknpu/apu offline model from the buffers
   std::map<std::string, std::pair<std::vector<char>, std::vector<char>>>
       subgraph_model_cache_buffers_{};
+  // The selected NNAdapter devices to build and run the model.
+  std::vector<std::string> nnadapter_device_names_{};
+  // The NNAdapter context properties for device configuration, model
+  // compilation and execution
+  std::string nnadapter_context_properties_{};
+  // The directory to find and store the compiled NNAdapter models.
+  std::string nnadapter_model_cache_dir_{""};
+  // The buffers for loading the compiled NNAdapter models from memory.
+  std::map<std::string, std::vector<char>> nnadapter_model_cache_buffers_{};
   int device_id_{0};
   int x86_math_num_threads_ = 1;
 
@@ -204,6 +213,42 @@ class LITE_API ConfigBase {
   subgraph_model_cache_buffers() const {
     return subgraph_model_cache_buffers_;
   }
+  // Check if the NNAdapter device is valid.
+  bool check_nnadapter_device_name(const std::string& nnadapter_device_name);
+  // Choose the NNAdapter devices to build and run the model.
+  void set_nnadapter_device_names(
+      const std::vector<std::string>& nnadapter_device_names) {
+    nnadapter_device_names_ = nnadapter_device_names;
+  }
+  const std::vector<std::string>& nnadapter_device_names() const {
+    return nnadapter_device_names_;
+  }
+  // Set the context properties by key-value map for NNAdapter device
+  // configuration, model compilation and execution
+  // Such as "HUAWEI_ASCEND_NPU_SELECTED_DEVICE_IDS=0;"
+  void set_nnadapter_context_properties(
+      const std::string& nnadapter_context_properties) {
+    nnadapter_context_properties_ = nnadapter_context_properties;
+  }
+  const std::string& nnadapter_context_properties() const {
+    return nnadapter_context_properties_;
+  }
+  // Enable caching and set the directory to search and store the compiled
+  // NNAdapter models in the file system.
+  void set_nnadapter_model_cache_dir(
+      const std::string& nnadapter_model_cache_dir) {
+    nnadapter_model_cache_dir_ = nnadapter_model_cache_dir;
+  }
+  const std::string& nnadapter_model_cache_dir() const {
+    return nnadapter_model_cache_dir_;
+  }
+  // Set the buffers for loading the compiled NNAdapter models from memory.
+  void set_nnadapter_model_cache_buffers(const std::string& key,
+                                         const std::vector<char>& buffer);
+  const std::map<std::string, std::vector<char>>&
+  nnadapter_model_cache_buffers() const {
+    return nnadapter_model_cache_buffers_;
+  }
   // set Device ID
   void set_device_id(int device_id) { device_id_ = device_id; }
   int get_device_id() const { return device_id_; }
@@ -254,7 +299,7 @@ class LITE_API CxxConfig : public ConfigBase {
   bool multi_stream_{false};
 #endif
 #ifdef LITE_WITH_MLU
-  lite_api::MLUCoreVersion mlu_core_version_{lite_api::MLUCoreVersion::MLU_270};
+  lite_metal_api::MLUCoreVersion mlu_core_version_{lite_metal_api::MLUCoreVersion::MLU_270};
   int mlu_core_number_{1};
   DataLayoutType mlu_input_layout_{DATALAYOUT(kNCHW)};
   std::vector<float> mlu_first_conv_mean_{};
@@ -302,7 +347,7 @@ class LITE_API CxxConfig : public ConfigBase {
 
 #ifdef LITE_WITH_MLU
   // set MLU core version, which is used when compiling MLU kernels
-  void set_mlu_core_version(lite_api::MLUCoreVersion core_version);
+  void set_mlu_core_version(lite_metal_api::MLUCoreVersion core_version);
   // set MLU core number, which is used when compiling MLU kernels
   void set_mlu_core_number(int core_number);
   // whether use MLU's first conv kernel. First conv is a special kernel
@@ -316,7 +361,7 @@ class LITE_API CxxConfig : public ConfigBase {
   // default is NCHW
   void set_mlu_input_layout(DataLayoutType layout);
 
-  lite_api::MLUCoreVersion mlu_core_version() const;
+  lite_metal_api::MLUCoreVersion mlu_core_version() const;
   int mlu_core_number() const;
   DataLayoutType mlu_input_layout() const;
   // std::pair<mean, std>

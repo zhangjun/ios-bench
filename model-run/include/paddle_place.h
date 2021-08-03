@@ -40,7 +40,7 @@
 #endif
 
 namespace paddle {
-namespace lite_api {
+namespace lite_metal_api {
 
 enum class TargetType : int {
   kUnk = 0,
@@ -61,7 +61,8 @@ enum class TargetType : int {
   kImaginationNNA = 15,
   kIntelFPGA = 16,
   kMetal = 17,
-  NUM = 18,  // number of fields.
+  kNNAdapter = 18,
+  NUM = 19,  // number of fields.
 };
 enum class PrecisionType : int {
   kUnk = 0,
@@ -137,7 +138,8 @@ enum class ActivationType : int {
   kErf = 19,
   kSign = 20,
   kSoftPlus = 21,
-  NUM = 22,
+  kMish = 22,
+  NUM = 23,
 };
 
 static size_t PrecisionTypeLength(PrecisionType type) {
@@ -174,7 +176,7 @@ struct PrecisionTypeTrait {
 };
 
 #define _ForEachPrecisionTypeHelper(callback, cpp_type, precision_type) \
-  callback(cpp_type, ::paddle::lite_api::PrecisionType::precision_type);
+  callback(cpp_type, ::paddle::lite_metal_api::PrecisionType::precision_type);
 
 #define _ForEachPrecisionType(callback)                   \
   _ForEachPrecisionTypeHelper(callback, bool, kBool);     \
@@ -203,9 +205,9 @@ _ForEachPrecisionTypeHelper(DefinePrecisionTypeTrait, float16_t, kFP16);
 #undef _ForEachPrecisionType
 #undef DefinePrecisionTypeTrait
 
-#define TARGET(item__) paddle::lite_api::TargetType::item__
-#define PRECISION(item__) paddle::lite_api::PrecisionType::item__
-#define DATALAYOUT(item__) paddle::lite_api::DataLayoutType::item__
+#define TARGET(item__) paddle::lite_metal_api::TargetType::item__
+#define PRECISION(item__) paddle::lite_metal_api::PrecisionType::item__
+#define DATALAYOUT(item__) paddle::lite_metal_api::DataLayoutType::item__
 
 const std::string& ActivationTypeToStr(ActivationType act);
 
